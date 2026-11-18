@@ -1,0 +1,13 @@
+# Versions observed in the successful synthetic component check (Python 3.11.14).
+# Direct dependencies only; not a complete environment lockfile.
+# This is the packaging validation environment, not proven historical study versions.
+numpy==1.26.4
+pandas==3.0.0
+matplotlib==3.10.8
+seaborn==0.12.2
+scikit-learn==1.4.1.post1
+xgboost==2.0.3
+shap==0.48.0
+statsmodels==0.15.0
+pygam==0.12.0
+joblib==1.5.3
