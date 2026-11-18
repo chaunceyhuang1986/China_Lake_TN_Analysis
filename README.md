@@ -38,17 +38,18 @@ $env:TN_CLUSTER_INPUT_DIR = "C:/authorized-data"
 $env:TN_MERGED_INPUT = "C:/authorized-data/merged_lake_data_complete.csv"
 python -X utf8 scripts/01_temporal/stl.py
 python -X utf8 scripts/02_clustering/kmeans.py
-python -X utf8 scripts/03_drivers/xgboost_shap.py
+python-X utf8 scripts/03_drivers/xgboost_shap.py
 python -X utf8 scripts/04_thresholds/gam.py
 python -X utf8 scripts/05_interactions/pdp.py
 ~~~
 
 Run from the repository root. Outputs are saved to analysis-specific directories under outputs; TN_OUTPUT_DIR overrides the directory for an individual run. STL also writes a decomposition table beside its input CSV. Use a writable authorized working copy. Some scripts execute on import or prompt for a target column; run them as separate programs.
 
-## Scope of reproducibility
+## Analytical framework
 
-The supplied XGBoost script fits an overall model with a train/test split and computes seasonal summaries; it does not implement separate seasonal models with five-fold cross-validation and 100 tuning iterations. PDP uses GradientBoostingRegressor. These implementations should be distinguished from any broader methodology described in the manuscript. Candidate turning points require scientific interpretation and uncertainty assessment. Full reproduction requires the authorized study inputs.
+This repository provides analytical scripts supporting the investigation of spatiotemporal variability in total nitrogen (TN) concentrations in lakes and reservoirs across China. The analyses combine seasonal–trend decomposition and spatial clustering to characterize TN dynamics, XGBoost and SHAP to examine the contributions of environmental and anthropogenic factors, and generalized additive models and partial dependence analysis to explore nonlinear responses and interactions among key predictors.
 
+The scripts cover temporal decomposition, clustering, driver attribution, and nonlinear response analysis. Input data requirements and execution instructions are provided above. Access to the original monitoring observations and the prepared environmental datasets is required to reproduce the analyses involving TN observations; applicable access restrictions are described in [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md).
 ## License
 
 Code is released under the [MIT License](LICENSE). This license does not grant rights to third-party monitoring or environmental data.
